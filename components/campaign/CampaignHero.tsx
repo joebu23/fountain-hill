@@ -1,14 +1,9 @@
-import Image from 'next/image'
 import { RichText } from '@payloadcms/richtext-lexical/react'
 import { CampaignProgressBar } from './CampaignProgressBar'
 import type { ProgressData } from '@/lib/givebutter'
 
 interface MediaRef {
   url?: string | null
-}
-
-interface SiteSettings {
-  logoDark?: { url?: string | null; alt?: string | null } | null
 }
 
 interface CampaignPage {
@@ -22,7 +17,6 @@ interface CampaignHeroProps {
   page: CampaignPage
   progress: ProgressData
   donateUrl: string
-  siteSettings: SiteSettings
 }
 
 function ArrowRight() {
@@ -46,7 +40,7 @@ function ArrowRight() {
   )
 }
 
-export function CampaignHero({ page, progress, donateUrl, siteSettings }: CampaignHeroProps) {
+export function CampaignHero({ page, progress, donateUrl }: CampaignHeroProps) {
   const bgStyle = page.heroImage?.url
     ? { backgroundImage: `url(${page.heroImage.url})` }
     : { backgroundColor: '#4BC8E8' }
@@ -59,68 +53,65 @@ export function CampaignHero({ page, progress, donateUrl, siteSettings }: Campai
         className="relative w-full bg-cover bg-center overflow-hidden"
         style={{ ...bgStyle, height: '58vh', minHeight: '420px' }}
       >
-        {/* Sky-blue organic panel – right side */}
+          {/* Campaign badge – top right */}
         <div
-          className="absolute top-0 right-0 bg-brand-sky"
-          style={{
-            width: '38%',
-            height: 'calc(100% - 160px)',
-            borderTopLeftRadius: '18% 22%',
-            borderBottomLeftRadius: '10% 15%',
-          }}
+          className="absolute top-0 right-0 bg-brand-sky flex flex-col items-center justify-center gap-2 rounded-bl-2xl"
+          style={{ width: '100px', height: '200px' }}
         >
-          {/* Logo + "capital campaign" label */}
-          <div className="flex flex-col items-center pt-5 px-6">
-            {siteSettings.logoDark?.url ? (
-              <Image
-                src={siteSettings.logoDark.url}
-                alt={siteSettings.logoDark.alt ?? 'Fountain Hill Center'}
-                width={80}
-                height={80}
-                className="w-16 h-16 object-contain"
-                priority
-              />
-            ) : (
-              <span className="text-white font-serif font-bold text-sm text-center leading-tight">
-                Fountain Hill<br />Center
-              </span>
-            )}
-            <span className="text-white font-sans text-xs uppercase tracking-widest text-center mt-1 leading-tight">
-              capital<br />campaign
-            </span>
-          </div>
+          <span className="text-white font-serif font-bold text-xs text-center leading-tight px-2">
+            Fountain Hill Center
+          </span>
+          <div className="w-8 border-t border-white/50" />
+          <span className="text-white font-sans text-xs uppercase tracking-widest text-center leading-tight px-2">
+            Capital<br />Campaign
+          </span>
+        </div>
+
+        {/* ── Wave — inside photo div so no flat edge ever shows ── */}
+        <div className="absolute bottom-0 left-0 right-0 pointer-events-none leading-none">
+
+          {/* Desktop (≥1024px): up → valley → up, blue right upturn */}
+          <svg
+            viewBox="0 0 1440 130"
+            preserveAspectRatio="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-full hidden lg:block"
+            style={{ height: '130px' }}
+          >
+            <path
+              d="M0,130 L0,82 C50,68 120,28 260,14 C380,2 490,6 610,44 C670,62 720,82 780,94 C820,100 865,103 915,103 L915,130 Z"
+              fill="white"
+            />
+            <path
+              d="M875,103 C935,96 1015,64 1125,33 C1215,10 1330,1 1440,0 L1440,130 L875,130 Z"
+              fill="#4BC8E8"
+            />
+          </svg>
+
+          {/* Mobile/tablet (<1024px): up → valley → flat, no right upturn */}
+          <svg
+            viewBox="0 0 1440 130"
+            preserveAspectRatio="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-full block lg:hidden"
+            style={{ height: '130px' }}
+          >
+            <path
+              d="M0,130 L0,82 C50,68 120,28 260,14 C380,2 490,6 610,44 C670,62 720,82 810,98 C930,108 1110,112 1440,112 L1440,130 Z"
+              fill="white"
+            />
+          </svg>
+
         </div>
 
       </div>
 
-      {/* ── Two-tone wave: white left + sky-blue right continuous with panel ── */}
-      <div className="relative -mt-[160px] z-10 leading-none pointer-events-none">
-        <svg
-          viewBox="0 0 1440 160"
-          preserveAspectRatio="none"
-          className="w-full"
-          style={{ height: '160px', display: 'block' }}
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          {/* Sky-blue right section — connects seamlessly to the blue panel above */}
-          <path
-            d="M970,0 L1440,0 L1440,160 L900,160 C930,120 955,50 970,0 Z"
-            fill="#4BC8E8"
-          />
-          {/* White organic wave — bottom-left */}
-          <path
-            d="M0,160 C80,160 100,20 260,12 C420,5 580,130 900,160 Z"
-            fill="white"
-          />
-        </svg>
-      </div>
-
       {/* ── Below-wave content ─────────────────────────────────── */}
-      <div className="relative z-10 bg-white -mt-16">
+      <div className="relative z-10 bg-white">
         <div className="max-w-6xl mx-auto px-4 md:px-8">
 
           {/* "Heart of the Hill:" logotype */}
-          <div className="pt-0 pb-8">
+          <div className="pt-6 pb-8">
             <h2 className="font-serif leading-none">
               <span className="text-5xl md:text-6xl lg:text-7xl font-bold text-brand-navy">Heart</span>
               <span className="text-4xl md:text-5xl lg:text-6xl font-normal italic text-brand-sky"> of the </span>
