@@ -3,6 +3,7 @@ import config from '@payload-config'
 import { notFound } from 'next/navigation'
 import { ComingSoon } from '@/components/campaign/ComingSoon'
 import { Footer } from '@/components/layout/Footer'
+import { PageHeader } from '@/components/layout/PageHeader'
 import { CampaignHero } from '@/components/campaign/CampaignHero'
 import { PillarGrid } from '@/components/shared/PillarGrid'
 import { MissionStatement } from '@/components/shared/MissionStatement'
@@ -55,6 +56,7 @@ export default async function CampaignPage({ params }: { params: Promise<Params>
 
   return (
     <>
+      <PageHeader variant="campaign" siteSettings={siteSettings} donateUrl={donateUrl} />
       <main>
         <CampaignHero page={campaignPage} progress={progress} donateUrl={donateUrl} siteSettings={siteSettings} />
         <PillarGrid pillars={campaignPage.pillars ?? []} />

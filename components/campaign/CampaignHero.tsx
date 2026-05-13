@@ -61,11 +61,12 @@ export function CampaignHero({ page, progress, donateUrl, siteSettings }: Campai
       >
         {/* Sky-blue organic panel – right side */}
         <div
-          className="absolute top-0 right-0 h-full bg-brand-sky"
+          className="absolute top-0 right-0 bg-brand-sky"
           style={{
             width: '38%',
+            height: 'calc(100% - 160px)',
             borderTopLeftRadius: '18% 22%',
-            borderBottomLeftRadius: '60% 50%',
+            borderBottomLeftRadius: '10% 15%',
           }}
         >
           {/* Logo + "capital campaign" label */}
@@ -90,25 +91,32 @@ export function CampaignHero({ page, progress, donateUrl, siteSettings }: Campai
           </div>
         </div>
 
-        {/* White wave at bottom */}
-        <div className="absolute bottom-0 left-0 right-0 leading-none pointer-events-none">
-          <svg
-            viewBox="0 0 1440 160"
-            preserveAspectRatio="none"
-            className="w-full"
-            style={{ height: '140px', display: 'block' }}
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M0,160 L0,80 C180,15 360,110 540,70 C720,30 900,95 1080,72 C1200,58 1320,95 1440,95 L1440,160 Z"
-              fill="white"
-            />
-          </svg>
-        </div>
       </div>
 
-      {/* ── Below-wave content – pulled up into the wave area ─── */}
-      <div className="relative z-10 bg-white -mt-20">
+      {/* ── Two-tone wave: white left + sky-blue right continuous with panel ── */}
+      <div className="relative -mt-[160px] z-10 leading-none pointer-events-none">
+        <svg
+          viewBox="0 0 1440 160"
+          preserveAspectRatio="none"
+          className="w-full"
+          style={{ height: '160px', display: 'block' }}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          {/* Sky-blue right section — connects seamlessly to the blue panel above */}
+          <path
+            d="M970,0 L1440,0 L1440,160 L900,160 C930,120 955,50 970,0 Z"
+            fill="#4BC8E8"
+          />
+          {/* White organic wave — bottom-left */}
+          <path
+            d="M0,160 C80,160 100,20 260,12 C420,5 580,130 900,160 Z"
+            fill="white"
+          />
+        </svg>
+      </div>
+
+      {/* ── Below-wave content ─────────────────────────────────── */}
+      <div className="relative z-10 bg-white -mt-16">
         <div className="max-w-6xl mx-auto px-4 md:px-8">
 
           {/* "Heart of the Hill:" logotype */}
