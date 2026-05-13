@@ -70,7 +70,7 @@ export function CampaignHero({ page, progress, donateUrl }: CampaignHeroProps) {
         {/* ── Wave — inside photo div so no flat edge ever shows ── */}
         <div className="absolute bottom-0 left-0 right-0 pointer-events-none leading-none">
 
-          {/* Desktop (≥1024px): up → valley → up, blue right upturn */}
+          {/* Desktop (≥1024px) */}
           <svg
             viewBox="0 0 1440 130"
             preserveAspectRatio="none"
@@ -78,17 +78,19 @@ export function CampaignHero({ page, progress, donateUrl }: CampaignHeroProps) {
             className="w-full hidden lg:block"
             style={{ height: '130px' }}
           >
+            {/* Blue backing — full-width wave path, 12 units higher; creates the blue stripe visible along the valley edge */}
             <path
-              d="M0,130 L0,82 C50,68 120,28 260,14 C380,2 490,6 610,44 C670,62 720,82 780,94 C820,100 865,103 915,103 L915,130 Z"
-              fill="white"
-            />
-            <path
-              d="M875,103 C935,96 1015,64 1125,33 C1215,10 1330,1 1440,0 L1440,130 L875,130 Z"
+              d="M0,130 L0,66 C10,8 110,2 175,46 C186,54 450,88 620,88 C790,88 1190,54 1235,46 C1247,43 1330,2 1385,5 C1415,13 1435,40 1440,48 L1440,130 Z"
               fill="#4BC8E8"
+            />
+            {/* White valley on top — the 12-unit difference shows as the blue stripe */}
+            <path
+              d="M175,130 L175,58 C186,65 450,100 620,100 C790,100 1190,65 1235,58 L1235,130 Z"
+              fill="white"
             />
           </svg>
 
-          {/* Mobile/tablet (<1024px): up → valley → flat, no right upturn */}
+          {/* Mobile/tablet (<1024px) */}
           <svg
             viewBox="0 0 1440 130"
             preserveAspectRatio="none"
@@ -97,7 +99,11 @@ export function CampaignHero({ page, progress, donateUrl }: CampaignHeroProps) {
             style={{ height: '130px' }}
           >
             <path
-              d="M0,130 L0,82 C50,68 120,28 260,14 C380,2 490,6 610,44 C670,62 720,82 810,98 C930,108 1110,112 1440,112 L1440,130 Z"
+              d="M0,130 L0,66 C10,8 110,2 175,46 C186,54 450,88 620,88 C790,88 1190,54 1235,46 C1247,43 1330,2 1385,5 C1415,13 1435,40 1440,48 L1440,130 Z"
+              fill="#4BC8E8"
+            />
+            <path
+              d="M175,130 L175,58 C186,65 450,100 620,100 C790,100 1190,65 1235,58 L1235,130 Z"
               fill="white"
             />
           </svg>
