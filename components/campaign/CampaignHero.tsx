@@ -69,45 +69,18 @@ export function CampaignHero({ page, progress, donateUrl }: CampaignHeroProps) {
 
         {/* ── Wave — inside photo div so no flat edge ever shows ── */}
         <div className="absolute bottom-0 left-0 right-0 pointer-events-none leading-none">
-
-          {/* Desktop (≥1024px) */}
           <svg
-            viewBox="0 0 1440 130"
+            viewBox="0 0 1440 220"
             preserveAspectRatio="none"
             xmlns="http://www.w3.org/2000/svg"
-            className="w-full hidden lg:block"
-            style={{ height: '130px' }}
+            className="w-full"
+            style={{ height: '220px' }}
           >
-            {/* Blue backing — full-width wave path, 12 units higher; creates the blue stripe visible along the valley edge */}
             <path
-              d="M0,130 L0,66 C10,8 110,2 175,46 C186,54 450,88 620,88 C790,88 1190,54 1235,46 C1247,43 1330,2 1385,5 C1415,13 1435,40 1440,48 L1440,130 Z"
-              fill="#4BC8E8"
-            />
-            {/* White valley on top — the 12-unit difference shows as the blue stripe */}
-            <path
-              d="M175,130 L175,58 C186,65 450,100 620,100 C790,100 1190,65 1235,58 L1235,130 Z"
+              d="M0,220 L0,218 C40,80 160,12 250,18 C380,28 660,192 900,210 C970,215 1050,215 1130,195 C1250,155 1390,15 1440,0 L1440,220 Z"
               fill="white"
             />
           </svg>
-
-          {/* Mobile/tablet (<1024px) */}
-          <svg
-            viewBox="0 0 1440 130"
-            preserveAspectRatio="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-full block lg:hidden"
-            style={{ height: '130px' }}
-          >
-            <path
-              d="M0,130 L0,66 C10,8 110,2 175,46 C186,54 450,88 620,88 C790,88 1190,54 1235,46 C1247,43 1330,2 1385,5 C1415,13 1435,40 1440,48 L1440,130 Z"
-              fill="#4BC8E8"
-            />
-            <path
-              d="M175,130 L175,58 C186,65 450,100 620,100 C790,100 1190,65 1235,58 L1235,130 Z"
-              fill="white"
-            />
-          </svg>
-
         </div>
 
       </div>
