@@ -77,7 +77,7 @@ export function CampaignHero({ page, progress, donateUrl }: CampaignHeroProps) {
             style={{ height: '220px' }}
           >
             <path
-              d="M0,220 L0,218 C40,80 160,12 250,18 C380,28 660,192 900,210 C970,215 1050,215 1130,195 C1250,155 1390,15 1440,0 L1440,220 Z"
+              d="M0,220 L0,218 C40,80 160,12 250,18 C380,28 700,200 1000,215 C1080,218 1160,214 1220,188 C1310,145 1400,20 1440,0 L1440,220 Z"
               fill="white"
             />
           </svg>
