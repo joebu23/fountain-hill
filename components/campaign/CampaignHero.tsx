@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { RichText } from '@payloadcms/richtext-lexical/react'
 import { CampaignProgressBar } from './CampaignProgressBar'
+import { CampaignLogotype } from './CampaignLogotype'
 import type { ProgressData } from '@/lib/givebutter'
 
 interface MediaRef {
@@ -87,24 +88,14 @@ export function CampaignHero({ page, progress, donateUrl }: CampaignHeroProps) {
 
       {/* ── Below-wave content ─────────────────────────────────── */}
       <div className="relative z-10 bg-white">
+
+        {/* Title wrapper parent */}
+        <div id="title-wrapper-parent" className="relative max-w-6xl mx-auto h-[125px] px-4 md:px-8 mt-0 mb-12">
+          <CampaignLogotype />
+        </div>
+
+        {/* HEALING headline + progress bar */}
         <div className="max-w-6xl mx-auto px-4 md:px-8">
-
-          {/* "Heart of the Hill:" logotype */}
-          <div className="pt-6 pb-8">
-            <h2 className="font-serif leading-[0.75] text-left">
-              <span className="block text-[68px] md:text-[90px] lg:text-[108px] font-bold text-brand-red">Heart</span>
-              <span className="block pl-[50px] leading-[0.65]">
-                <span className="text-[56px] md:text-[68px] lg:text-[81px] font-normal italic text-brand-sky">of the </span><span className="text-[68px] md:text-[90px] lg:text-[108px] font-bold text-brand-blue">Hill:</span>
-              </span>
-            </h2>
-            <div className="mt-4">
-              <span className="inline-block bg-brand-orange text-white font-sans text-2xl font-normal px-5 py-1.5 rounded-full">
-                A Capital Campaign for Fountain Hill Center
-              </span>
-            </div>
-          </div>
-
-          {/* HEALING headline + progress bar */}
           <div className="flex flex-col md:flex-row gap-8 md:gap-16 pb-16">
             {/* Left – headline */}
             <div className="flex-1">
@@ -163,8 +154,8 @@ export function CampaignHero({ page, progress, donateUrl }: CampaignHeroProps) {
               />
             </div>
           </div>
-
         </div>
+
       </div>
     </section>
   )
