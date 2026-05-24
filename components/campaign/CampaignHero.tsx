@@ -92,12 +92,12 @@ export function CampaignHero({ page, progress, donateUrl }: CampaignHeroProps) {
           {/* "Heart of the Hill:" logotype */}
           <div className="pt-6 pb-8">
             <h2 className="font-serif leading-none">
-              <span className="text-5xl md:text-6xl lg:text-7xl font-bold text-brand-navy">Heart</span>
-              <span className="text-4xl md:text-5xl lg:text-6xl font-normal italic text-brand-sky"> of the </span>
-              <span className="text-5xl md:text-6xl lg:text-7xl font-bold text-brand-navy">Hill:</span>
+              <span className="text-[68px] md:text-[90px] lg:text-[108px] font-bold text-brand-red">Heart</span>
+              <span className="text-[56px] md:text-[68px] lg:text-[81px] font-normal italic text-brand-sky"> of the </span>
+              <span className="text-[68px] md:text-[90px] lg:text-[108px] font-bold text-brand-blue">Hill:</span>
             </h2>
             <div className="mt-4">
-              <span className="inline-block bg-brand-orange text-white font-sans text-sm font-semibold px-5 py-1.5 rounded-full">
+              <span className="inline-block bg-brand-orange text-white font-sans text-2xl font-normal px-5 py-1.5 rounded-full">
                 A Capital Campaign for Fountain Hill Center
               </span>
             </div>
