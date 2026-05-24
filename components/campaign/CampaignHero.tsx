@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { RichText } from '@payloadcms/richtext-lexical/react'
 import { CampaignProgressBar } from './CampaignProgressBar'
 import type { ProgressData } from '@/lib/givebutter'
@@ -67,6 +68,17 @@ export function CampaignHero({ page, progress, donateUrl }: CampaignHeroProps) {
           </span>
         </div>
 
+        {/* Bottom curve overlay – pinned to very bottom of hero photo */}
+        <div className="absolute bottom-0 left-0 right-0 pointer-events-none">
+          <Image
+            src="/hero-bottom-curve.png"
+            alt=""
+            width={1024}
+            height={370}
+            className="w-full h-auto block"
+            priority
+          />
+        </div>
 
       </div>
 
