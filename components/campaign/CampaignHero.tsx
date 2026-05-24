@@ -51,8 +51,8 @@ export function CampaignHero({ page, progress, donateUrl }: CampaignHeroProps) {
 
       {/* ── Hero photo band ─────────────────────────────────────── */}
       <div
-        className="relative w-full bg-cover bg-center overflow-hidden"
-        style={{ ...bgStyle, height: '58vh', minHeight: '420px' }}
+        className="relative w-full bg-cover bg-center overflow-hidden h-[600px] md:h-[600px] lg:h-[650px] xl:h-[825px] 2xl:h-[975px]"
+        style={bgStyle}
       >
           {/* Campaign badge – top right */}
         <div
