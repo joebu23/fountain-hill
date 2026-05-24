@@ -56,16 +56,19 @@ export function CampaignHero({ page, progress, donateUrl }: CampaignHeroProps) {
       >
           {/* Campaign badge – top right */}
         <div
-          className="absolute top-0 right-0 bg-brand-sky flex flex-col items-center justify-center gap-2 rounded-bl-2xl"
-          style={{ width: '100px', height: '200px' }}
+          className="absolute top-0 bg-brand-sky flex flex-col items-start pt-9 pb-5 px-[17px]"
+          style={{ width: '129px', right: '7.7%' }}
         >
-          <span className="text-white font-serif font-bold text-xs text-center leading-tight px-2">
-            Fountain Hill Center
-          </span>
-          <div className="w-8 border-t border-white/50" />
-          <span className="text-white font-sans text-xs uppercase tracking-widest text-center leading-tight px-2">
-            Capital<br />Campaign
-          </span>
+          <Image
+            src="/fhc-logo-white.png"
+            alt="Fountain Hill Center"
+            width={95}
+            height={58}
+            className="w-full h-auto"
+          />
+          <div className="mt-[65px] font-sans font-bold text-[15px] text-white text-left leading-snug">
+            capital<br />campaign
+          </div>
         </div>
 
         {/* Bottom curve overlay – pinned to very bottom of hero photo */}
