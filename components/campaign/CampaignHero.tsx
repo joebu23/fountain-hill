@@ -67,27 +67,6 @@ export function CampaignHero({ page, progress, donateUrl }: CampaignHeroProps) {
           </span>
         </div>
 
-        {/* ── Wave — inside photo div so no flat edge ever shows ── */}
-        <div className="absolute bottom-0 left-0 right-0 pointer-events-none leading-none">
-          <svg
-            viewBox="0 0 1440 220"
-            preserveAspectRatio="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-full"
-            style={{ height: '220px' }}
-          >
-            {/* Blue band: same curve offset upward — thick left edge, tapers thin through valley, thickens on right flare */}
-            <path
-              d="M0,220 L0,150 C40,32 160,0 250,2 C380,26 700,200 1000,215 C1080,215 1160,172 1220,108 C1280,35 1360,0 1440,0 L1440,220 Z"
-              fill="#4BC8E8"
-            />
-            {/* White wave on top */}
-            <path
-              d="M0,220 L0,218 C40,80 160,12 250,18 C380,28 700,200 1000,215 C1080,218 1160,214 1220,188 C1310,152 1400,115 1440,115 L1440,220 Z"
-              fill="white"
-            />
-          </svg>
-        </div>
 
       </div>
 
