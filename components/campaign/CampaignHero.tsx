@@ -1,11 +1,19 @@
 import Image from 'next/image'
-import { RichText } from '@payloadcms/richtext-lexical/react'
 import { CampaignProgressBar } from './CampaignProgressBar'
 import { CampaignLogotype } from './CampaignLogotype'
+import { CampaignTitleBlock } from './CampaignTitleBlock'
+import { PillarGrid } from '@/components/shared/PillarGrid'
 import type { ProgressData } from '@/lib/givebutter'
 
 interface MediaRef {
   url?: string | null
+  alt?: string | null
+}
+
+interface Pillar {
+  icon?: MediaRef | null
+  label: string
+  description: string
 }
 
 interface CampaignPage {
@@ -19,30 +27,11 @@ interface CampaignHeroProps {
   page: CampaignPage
   progress: ProgressData
   donateUrl: string
+  pillars: Pillar[]
 }
 
-function ArrowRight() {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 64 64"
-      className="w-14 h-14 flex-shrink-0"
-      aria-hidden="true"
-    >
-      <circle cx="32" cy="32" r="32" fill="#4BC8E8" />
-      <path
-        d="M20 32h24M36 22l12 10-12 10"
-        stroke="white"
-        strokeWidth="3.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        fill="none"
-      />
-    </svg>
-  )
-}
 
-export function CampaignHero({ page, progress, donateUrl }: CampaignHeroProps) {
+export function CampaignHero({ page, progress, donateUrl, pillars }: CampaignHeroProps) {
   const bgStyle = page.heroImage?.url
     ? { backgroundImage: `url(${page.heroImage.url})` }
     : { backgroundColor: '#4BC8E8' }
@@ -94,55 +83,18 @@ export function CampaignHero({ page, progress, donateUrl }: CampaignHeroProps) {
           <CampaignLogotype />
         </div>
 
-        {/* HEALING headline + progress bar */}
+        {/* HEALING headline + pillars (left) | progress bar (right) */}
         <div className="max-w-6xl mx-auto px-4 md:px-8">
-          <div className="flex flex-col md:flex-row gap-8 md:gap-16 pb-16">
-            {/* Left – headline */}
-            <div className="flex-1">
-              {page.heroHeadline && (
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="mt-1 flex-shrink-0">
-                    <ArrowRight />
-                  </div>
-                  <h1 className="font-sans leading-none">
-                    {(() => {
-                      const lower = page.heroHeadline.toLowerCase()
-                      const takesIdx = lower.indexOf('takes')
-                      if (takesIdx === -1) {
-                        return (
-                          <span className="block font-extrabold uppercase text-4xl md:text-5xl lg:text-6xl text-brand-orange">
-                            {page.heroHeadline}
-                          </span>
-                        )
-                      }
-                      const before = page.heroHeadline.slice(0, takesIdx).trim()
-                      const after = page.heroHeadline.slice(takesIdx + 5).trim()
-                      return (
-                        <>
-                          {before && (
-                            <span className="block font-extrabold uppercase text-4xl md:text-5xl lg:text-6xl text-brand-orange">
-                              {before}
-                            </span>
-                          )}
-                          <span className="block font-normal text-lg md:text-xl text-text-muted text-center italic">
-                            takes
-                          </span>
-                          {after && (
-                            <span className="block font-extrabold uppercase text-4xl md:text-5xl lg:text-6xl text-brand-orange">
-                              {after}
-                            </span>
-                          )}
-                        </>
-                      )
-                    })()}
-                  </h1>
-                </div>
-              )}
-              {page.heroSubheadline && (
-                <div className="text-text-dark font-sans text-base md:text-lg leading-relaxed max-w-lg mt-4">
-                  <RichText data={page.heroSubheadline as never} />
-                </div>
-              )}
+          <div className="flex flex-col md:flex-row gap-8 md:gap-16 pb-12">
+            {/* Left – headline then pillars pushed to bottom */}
+            <div className="flex-1 flex flex-col">
+              <CampaignTitleBlock
+                headline={page.heroHeadline}
+                subheadline={page.heroSubheadline}
+              />
+              <div className="mt-auto pt-8">
+                <PillarGrid pillars={pillars} />
+              </div>
             </div>
 
             {/* Right – progress */}

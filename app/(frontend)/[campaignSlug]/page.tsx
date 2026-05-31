@@ -4,7 +4,6 @@ import { notFound } from 'next/navigation'
 import { ComingSoon } from '@/components/campaign/ComingSoon'
 import { Footer } from '@/components/layout/Footer'
 import { CampaignHero } from '@/components/campaign/CampaignHero'
-import { PillarGrid } from '@/components/shared/PillarGrid'
 import { MissionStatement } from '@/components/shared/MissionStatement'
 import { StatGrid } from '@/components/shared/StatGrid'
 import { ServiceListWithCallout } from '@/components/shared/ServiceListWithCallout'
@@ -56,8 +55,7 @@ export default async function CampaignPage({ params }: { params: Promise<Params>
   return (
     <>
       <main>
-        <CampaignHero page={campaignPage} progress={progress} donateUrl={donateUrl} />
-        <PillarGrid pillars={campaignPage.pillars ?? []} />
+        <CampaignHero page={campaignPage} progress={progress} donateUrl={donateUrl} pillars={campaignPage.pillars ?? []} />
         <MissionStatement
           heading={campaignPage.whoWeAreHeading ?? ''}
           body={campaignPage.whoWeAreBody}

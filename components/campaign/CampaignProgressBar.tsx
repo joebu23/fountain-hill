@@ -19,31 +19,31 @@ export async function CampaignProgressBar({ progress, donateUrl, ctaLabel }: Cam
   const qrDataUrl = await QRCode.toDataURL(donateUrl, { width: 120, margin: 1 })
 
   return (
-    <div>
-      <p className="font-sans text-xs uppercase tracking-widest text-text-muted mb-1">
+    <div id="campaign-progress-bar">
+      <p className="font-sans text-xs font-bold uppercase tracking-widest text-text-muted mb-1 text-center">
         Raised to Date:
       </p>
 
-      <p className="font-sans font-extrabold text-3xl md:text-4xl text-brand-orange leading-tight">
+      <p className="font-sans font-extrabold text-3xl md:text-4xl text-brand-orange leading-tight text-center">
         {formatCurrency(progress.amountRaised)}
       </p>
 
       {progress.source === 'fallback' && progress.asOf && (
-        <p className="font-sans text-xs text-text-muted mt-0.5">
+        <p className="font-sans text-xs text-text-muted mt-0.5 text-center">
           As of {new Date(progress.asOf).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
         </p>
       )}
 
-      <p className="font-sans text-sm text-brand-navy mt-1">
+      <p className="font-sans text-sm text-brand-navy mt-1 text-center">
         of our{' '}
         <span className="font-semibold text-brand-orange">{formatCurrency(progress.goal)}</span>{' '}
         goal.
       </p>
 
       {/* Progress bar */}
-      <div className="mt-4 h-3 bg-surface-light rounded-full overflow-hidden">
+      <div className="mt-4 h-5 bg-surface-light overflow-hidden">
         <div
-          className="h-full bg-brand-sky rounded-full transition-all duration-1000"
+          className="h-full bg-brand-sky transition-all duration-1000"
           style={{ width: `${progress.percentComplete}%` }}
         />
       </div>
@@ -51,34 +51,26 @@ export async function CampaignProgressBar({ progress, donateUrl, ctaLabel }: Cam
         {progress.percentComplete.toFixed(2)}%
       </p>
 
-      {progress.donors !== undefined && (
-        <p className="font-sans text-sm text-brand-navy mt-2">
-          {progress.donors.toLocaleString()} donors
+      {/* Invite text → CTA → QR, all centered */}
+      <div className="mt-5 flex flex-col items-center gap-4">
+        <p className="font-sans text-base font-bold italic text-brand-orange text-center leading-relaxed w-full md:px-16">
+          We invite you to partner with us in shaping this future.
         </p>
-      )}
-
-      {/* Invite text */}
-      <p className="font-sans text-sm font-semibold italic text-brand-orange mt-4 leading-relaxed">
-        We invite you to partner with us in shaping this future.
-      </p>
-
-      {/* QR + CTA */}
-      <div className="mt-5 flex items-center gap-4">
+        <a
+          href={donateUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-full text-center bg-brand-orange text-white rounded-full px-6 py-3 font-sans font-semibold uppercase tracking-wide text-sm hover:bg-orange-600 transition-colors"
+        >
+          {ctaLabel}
+        </a>
         <img
           src={qrDataUrl}
           alt="Scan to donate"
           width={80}
           height={80}
-          className="rounded-lg flex-shrink-0"
+          className="rounded-lg"
         />
-        <a
-          href={donateUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex-1 text-center bg-brand-orange text-white rounded-full px-6 py-3 font-sans font-semibold uppercase tracking-wide text-sm hover:bg-orange-600 transition-colors"
-        >
-          {ctaLabel}
-        </a>
       </div>
     </div>
   )

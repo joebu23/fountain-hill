@@ -25,6 +25,7 @@ const config: Config = {
       },
     },
   },
+  safelist: ['md:border-r'],
   plugins: [],
 }
 
