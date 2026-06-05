@@ -237,11 +237,23 @@ async function seed() {
         { label: 'Growth', description: 'Expanding services to meet rising mental health needs.' },
       ],
 
-      whoWeAreHeading: 'Who We Are',
-      whoWeAreBody: richTextMultiple([
-        'Fountain Hill Center is a nonprofit collective of therapists supporting personal and relational well-being through counseling, education, and community-based care.',
-        'We operate with a collaborative model that emphasizes listening to the community, responding to genuine needs, and fostering both individual and community transformation.',
-      ]),
+      iconDisplay: {
+        title: null,
+        items: [
+          { title: 'Healing', body: richText('Compassionate care that meets people where they are.') },
+          { title: 'Preservation', body: richText('Honoring our historic home for future generations.') },
+          { title: 'Growth', body: richText('Expanding services to meet rising mental health needs.') },
+        ],
+      },
+
+      quoteDisplay: {
+        title: 'Who We Are',
+        body: richTextMultiple([
+          'Fountain Hill Center is a nonprofit collective of therapists supporting personal and relational well-being through counseling, education, and community-based care.',
+          'We operate with a collaborative model that emphasizes listening to the community, responding to genuine needs, and fostering both individual and community transformation.',
+        ]),
+        image: null,
+      },
 
       communityStatsHeading: 'The Need In Our Community',
       communityStats: [

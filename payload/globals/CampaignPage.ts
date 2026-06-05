@@ -22,32 +22,74 @@ export const CampaignPage: GlobalConfig = {
       ],
     },
 
-    // ── WHO WE ARE ────────────────────────────────────────────────────────
-    { name: 'whoWeAreHeading', type: 'text', defaultValue: 'Who We Are' },
-    { name: 'whoWeAreBody', type: 'richText' },
-
-    // ── COMMUNITY STATS ───────────────────────────────────────────────────
-    { name: 'communityStatsHeading', type: 'text', defaultValue: 'The Need In Our Community' },
+    // ── QUOTE DISPLAY ─────────────────────────────────────────────────────
     {
-      name: 'communityStats',
-      type: 'array',
-      maxRows: 6,
+      name: 'quoteDisplay',
+      type: 'group',
+      label: 'Quote Display',
       fields: [
-        { name: 'statValue', type: 'text', admin: { description: 'Example: Nearly 1 in 4 adults' } },
-        { name: 'statLabel', type: 'text', admin: { description: 'Example: have been diagnosed with depression.' } },
+        { name: 'title', type: 'text', defaultValue: 'Who We Are' },
+        { name: 'body', type: 'richText' },
+        { name: 'image', type: 'upload', relationTo: 'media' },
       ],
     },
 
-    // ── SERVICES ──────────────────────────────────────────────────────────
-    { name: 'servicesHeading', type: 'text', defaultValue: 'Who We Help With Our Available Services' },
+    // ── ICON DISPLAY ──────────────────────────────────────────────────────
     {
-      name: 'servicesList',
-      type: 'array',
-      fields: [{ name: 'serviceName', type: 'text', required: true }],
+      name: 'iconDisplay',
+      type: 'group',
+      label: 'Icon Display',
+      fields: [
+        { name: 'title', type: 'text' },
+        {
+          name: 'items',
+          type: 'array',
+          fields: [
+            { name: 'icon', type: 'upload', relationTo: 'media' },
+            { name: 'title', type: 'text', required: true },
+            { name: 'body', type: 'richText' },
+          ],
+        },
+      ],
     },
-    { name: 'servicesMissionStatement', type: 'richText' },
-    { name: 'servicesImage', type: 'upload', relationTo: 'media' },
-    { name: 'servicesCTALabel', type: 'text', defaultValue: 'DONATE HERE' },
+
+    // ── SERVICES SECTION ──────────────────────────────────────────────────
+    {
+      name: 'servicesSection',
+      type: 'group',
+      label: 'Services Section',
+      fields: [
+        {
+          name: 'leftGroup',
+          type: 'group',
+          label: 'Left Group',
+          fields: [
+            { name: 'leftTitle', type: 'text', defaultValue: 'Who We Help With Our Available Services' },
+            {
+              name: 'list',
+              type: 'array',
+              label: 'List',
+              fields: [
+                { name: 'item', type: 'text', required: true },
+              ],
+            },
+          ],
+        },
+        {
+          name: 'rightGroup',
+          type: 'group',
+          label: 'Right Group',
+          fields: [
+            { name: 'image', type: 'upload', relationTo: 'media' },
+            { name: 'title', type: 'text' },
+            { name: 'ctaLabel', type: 'text', defaultValue: 'DONATE HERE' },
+            { name: 'ctaLink', type: 'text' },
+            { name: 'qrCodeImage', type: 'upload', relationTo: 'media' },
+            { name: 'calloutImage', type: 'upload', relationTo: 'media' },
+          ],
+        },
+      ],
+    },
 
     // ── IMPACT ────────────────────────────────────────────────────────────
     { name: 'impactHeading', type: 'text', defaultValue: 'Impact at a Glance' },

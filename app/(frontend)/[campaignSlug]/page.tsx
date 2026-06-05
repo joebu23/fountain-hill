@@ -4,9 +4,9 @@ import { notFound } from 'next/navigation'
 import { ComingSoon } from '@/components/campaign/ComingSoon'
 import { Footer } from '@/components/layout/Footer'
 import { CampaignHero } from '@/components/campaign/CampaignHero'
-import { MissionStatement } from '@/components/shared/MissionStatement'
-import { StatGrid } from '@/components/shared/StatGrid'
-import { ServiceListWithCallout } from '@/components/shared/ServiceListWithCallout'
+import { QuoteDisplay } from '@/components/shared/QuoteDisplay'
+import { IconDisplay } from '@/components/shared/IconDisplay'
+import { ServicesSection } from '@/components/shared/ServicesSection'
 import { ImpactComparison } from '@/components/shared/ImpactComparison'
 import { CampaignBudgetBreakdown } from '@/components/campaign/CampaignBudgetBreakdown'
 import { ProjectCardGrid } from '@/components/shared/ProjectCardGrid'
@@ -56,15 +56,19 @@ export default async function CampaignPage({ params }: { params: Promise<Params>
     <>
       <main>
         <CampaignHero page={campaignPage} progress={progress} donateUrl={donateUrl} pillars={campaignPage.pillars ?? []} />
-        <MissionStatement
-          heading={campaignPage.whoWeAreHeading ?? ''}
-          body={campaignPage.whoWeAreBody}
+        <QuoteDisplay
+          title={campaignPage.quoteDisplay?.title}
+          body={campaignPage.quoteDisplay?.body}
+          image={campaignPage.quoteDisplay?.image}
         />
-        <StatGrid
-          heading={campaignPage.communityStatsHeading ?? ''}
-          stats={campaignPage.communityStats ?? []}
+        <IconDisplay
+          title={campaignPage.iconDisplay?.title}
+          items={campaignPage.iconDisplay?.items}
         />
-        <ServiceListWithCallout page={campaignPage} donateUrl={donateUrl} />
+<ServicesSection
+          leftGroup={campaignPage.servicesSection?.leftGroup}
+          rightGroup={campaignPage.servicesSection?.rightGroup}
+        />
         <ImpactComparison page={campaignPage} />
         <CampaignBudgetBreakdown
           page={campaignPage}
