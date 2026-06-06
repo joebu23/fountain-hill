@@ -114,24 +114,32 @@ export const CampaignPage: GlobalConfig = {
       ],
     },
 
-    // ── IMPACT ────────────────────────────────────────────────────────────
-    { name: 'impactHeading', type: 'text', defaultValue: 'Impact at a Glance' },
+    // ── BUDGET EXPLAINER ──────────────────────────────────────────────────
     {
-      name: 'impactMetrics',
-      type: 'array',
-      maxRows: 4,
+      name: 'budgetExplainer',
+      type: 'group',
+      label: 'Budget Explainer',
       fields: [
-        { name: 'currentLabel', type: 'text', admin: { description: 'Example: Currently: 21,000 Sessions' } },
-        { name: 'currentDescription', type: 'textarea' },
-        { name: 'projectedLabel', type: 'text', admin: { description: 'Example: Your Impact: 3,500 Sessions' } },
-        { name: 'projectedDescription', type: 'textarea' },
+        { name: 'title', type: 'text' },
+        { name: 'subtitle', type: 'text' },
+        { name: 'subtext', type: 'richText' },
+        {
+          name: 'amounts',
+          type: 'array',
+          fields: [
+            { name: 'amount', type: 'text', required: true },
+            { name: 'title', type: 'text', required: true },
+          ],
+        },
+        { name: 'statement', type: 'richText' },
+        { name: 'ctaLabel', type: 'text' },
+        { name: 'ctaLink', type: 'text' },
+        { name: 'qrCode', type: 'upload', relationTo: 'media' },
+        { name: 'image', type: 'upload', relationTo: 'media' },
+        { name: 'quoteIcon', type: 'upload', relationTo: 'media' },
+        { name: 'quote', type: 'richText' },
+        { name: 'quoteAttribution', type: 'richText' },
       ],
-    },
-    {
-      name: 'impactTestimonial',
-      type: 'relationship',
-      relationTo: 'testimonials',
-      admin: { description: 'Pull quote shown in the Impact section.' },
     },
 
     // ── BUDGET BREAKDOWN ──────────────────────────────────────────────────

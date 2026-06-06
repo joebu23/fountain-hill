@@ -8,7 +8,7 @@ import { QuoteDisplay } from '@/components/shared/QuoteDisplay'
 import { IconDisplay } from '@/components/shared/IconDisplay'
 import { ServicesSection } from '@/components/shared/ServicesSection'
 import { ImpactOverview } from '@/components/shared/ImpactOverview'
-import { ImpactComparison } from '@/components/shared/ImpactComparison'
+import { BudgetExplainer } from '@/components/shared/BudgetExplainer'
 import { CampaignBudgetBreakdown } from '@/components/campaign/CampaignBudgetBreakdown'
 import { ProjectCardGrid } from '@/components/shared/ProjectCardGrid'
 import { FAQAccordion } from '@/components/shared/FAQAccordion'
@@ -79,7 +79,20 @@ export default async function CampaignPage({ params }: { params: Promise<Params>
           headerIcon={campaignPage.impactOverview?.headerIcon}
           impactItems={campaignPage.impactOverview?.impactItems}
         />
-        <ImpactComparison page={campaignPage} />
+        <BudgetExplainer
+          title={campaignPage.budgetExplainer?.title}
+          subtitle={campaignPage.budgetExplainer?.subtitle}
+          subtext={campaignPage.budgetExplainer?.subtext}
+          amounts={campaignPage.budgetExplainer?.amounts}
+          statement={campaignPage.budgetExplainer?.statement}
+          ctaLabel={campaignPage.budgetExplainer?.ctaLabel}
+          ctaLink={campaignPage.budgetExplainer?.ctaLink}
+          qrCode={campaignPage.budgetExplainer?.qrCode}
+          image={campaignPage.budgetExplainer?.image}
+          quoteIcon={campaignPage.budgetExplainer?.quoteIcon}
+          quote={campaignPage.budgetExplainer?.quote}
+          quoteAttribution={campaignPage.budgetExplainer?.quoteAttribution}
+        />
         <CampaignBudgetBreakdown
           page={campaignPage}
           goalAmount={campaignSettings.campaignGoal ?? 1000000}
