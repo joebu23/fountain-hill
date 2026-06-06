@@ -91,6 +91,29 @@ export const CampaignPage: GlobalConfig = {
       ],
     },
 
+    // ── IMPACT OVERVIEW ───────────────────────────────────────────────────
+    {
+      name: 'impactOverview',
+      type: 'group',
+      label: 'Impact Overview',
+      fields: [
+        { name: 'titleImage', type: 'upload', relationTo: 'media' },
+        { name: 'quoteIcon', type: 'upload', relationTo: 'media' },
+        { name: 'quote', type: 'richText' },
+        { name: 'quoteAttribution', type: 'text' },
+        { name: 'title', type: 'richText' },
+        { name: 'headerIcon', type: 'upload', relationTo: 'media' },
+        {
+          name: 'impactItems',
+          type: 'array',
+          fields: [
+            { name: 'title', type: 'text', required: true },
+            { name: 'body', type: 'richText' },
+          ],
+        },
+      ],
+    },
+
     // ── IMPACT ────────────────────────────────────────────────────────────
     { name: 'impactHeading', type: 'text', defaultValue: 'Impact at a Glance' },
     {

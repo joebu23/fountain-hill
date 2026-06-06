@@ -7,6 +7,7 @@ import { CampaignHero } from '@/components/campaign/CampaignHero'
 import { QuoteDisplay } from '@/components/shared/QuoteDisplay'
 import { IconDisplay } from '@/components/shared/IconDisplay'
 import { ServicesSection } from '@/components/shared/ServicesSection'
+import { ImpactOverview } from '@/components/shared/ImpactOverview'
 import { ImpactComparison } from '@/components/shared/ImpactComparison'
 import { CampaignBudgetBreakdown } from '@/components/campaign/CampaignBudgetBreakdown'
 import { ProjectCardGrid } from '@/components/shared/ProjectCardGrid'
@@ -68,6 +69,15 @@ export default async function CampaignPage({ params }: { params: Promise<Params>
 <ServicesSection
           leftGroup={campaignPage.servicesSection?.leftGroup}
           rightGroup={campaignPage.servicesSection?.rightGroup}
+        />
+        <ImpactOverview
+          titleImage={campaignPage.impactOverview?.titleImage}
+          quoteIcon={campaignPage.impactOverview?.quoteIcon}
+          quote={campaignPage.impactOverview?.quote}
+          quoteAttribution={campaignPage.impactOverview?.quoteAttribution}
+          title={campaignPage.impactOverview?.title}
+          headerIcon={campaignPage.impactOverview?.headerIcon}
+          impactItems={campaignPage.impactOverview?.impactItems}
         />
         <ImpactComparison page={campaignPage} />
         <CampaignBudgetBreakdown
