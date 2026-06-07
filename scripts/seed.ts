@@ -312,37 +312,6 @@ async function seed() {
       ],
       impactTestimonial: clientTestimonialId,
 
-      budgetHeading: '$1M Campaign Goal',
-      budgetItems: [
-        { label: 'Client Assistance & Outreach', amount: 250000 },
-        { label: 'Carriage House Expansion (GR)', amount: 200000 },
-        { label: 'Renovations to Historic Bundy House (GR)', amount: 450000 },
-        { label: 'Addition of a Meditation Garden (GR)', amount: 20000 },
-        { label: 'Campaign Costs', amount: 80000 },
-      ],
-      budgetBodyText: richText(
-        'This campaign honors the past while building a future where care is accessible, timely, and deeply human.',
-      ),
-      budgetEndorsement: mayorTestimonialId,
-
-      projectsHeading: 'Project Components',
-      projects: createdProjects,
-
-      faqHeading: 'FAQ',
-      faqSubheading: 'Heart of the Hill Capital Campaign',
-      faqItems: createdFaqs,
-
-      closingHeading: 'A Personal Invitation',
-      closingBody: richTextMultiple([
-        'Every generation is shaped by the spaces it preserves and the values it chooses to uphold. By investing in Fountain Hill Center, you help ensure that compassionate, high-quality mental health care remains accessible — not just today, but for decades to come.',
-        'Your generosity will leave a legacy of healing, one that continues to change lives, strengthen families, and nurture the well-being of our community.',
-        'We invite you to partner with us in shaping this future.',
-      ]),
-      closingCTALabel: 'DONATE HERE',
-
-      resourcesHeading: 'View more details in our Case for Support:',
-      caseForSupportLabel: 'DOWNLOAD PDF HERE',
-      historyPDFLabel: 'DOWNLOAD PDF HERE',
     },
   })
 

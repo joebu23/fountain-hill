@@ -21,8 +21,8 @@ export function IconDisplay({ title, items }: IconDisplayProps) {
   if (!items || items.length === 0) return null
 
   return (
-    <section id="icon-display" className="pt-0 pb-16 md:pb-24 bg-white">
-      <div className="max-w-6xl mx-auto px-4 md:px-8">
+    <section className="py-16 md:py-24 bg-white">
+      <div className="max-w-6xl mx-auto">
         {title && (
           <h2 className="font-sans font-bold text-2xl text-brand-blue mb-1 text-center">
             {title}
@@ -36,7 +36,7 @@ export function IconDisplay({ title, items }: IconDisplayProps) {
                 : null
 
             return [
-              <div key={i} className="flex-1 flex flex-col items-center text-center py-6 px-6">
+              <div key={i} className="flex-1 flex flex-col items-center text-center py-6 px-4">
                 {icon?.url ? (
                   <Image
                     src={icon.url}
@@ -52,7 +52,7 @@ export function IconDisplay({ title, items }: IconDisplayProps) {
                     </span>
                   </div>
                 )}
-                <h3 className="font-sans font-bold text-brand-blue text-[42px] leading-tight mb-2 max-w-[250px]">
+                <h3 className="font-sans font-bold text-brand-blue text-[28px] leading-tight mb-4 max-w-[250px]">
                   {item.title}
                 </h3>
                 {item.body && (

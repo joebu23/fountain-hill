@@ -14,8 +14,6 @@ interface TestimonialRef {
 }
 
 interface CampaignPageBudget {
-  budgetHeading?: string | null
-  budgetItems?: { label: string; amount: number }[] | null
   budgetBodyText?: Record<string, unknown> | null
   budgetEndorsement?: TestimonialRef | string | null
 }
@@ -50,21 +48,6 @@ export function CampaignBudgetBreakdown({ page, goalAmount, donateUrl }: Campaig
               {formatCurrency(goalAmount)}<br />
               <span className="text-2xl text-text-muted font-semibold">CAMPAIGN GOAL</span>
             </p>
-
-            {page.budgetItems && page.budgetItems.length > 0 && (
-              <ul className="space-y-4 mb-8">
-                {page.budgetItems.map((item, i) => (
-                  <li key={i} className="flex items-start gap-4 border-l-4 border-brand-orange pl-4">
-                    <div className="flex-1">
-                      <p className="font-sans font-semibold text-text-dark">{item.label}</p>
-                    </div>
-                    <p className="font-sans font-bold text-brand-orange flex-shrink-0">
-                      {formatCurrency(item.amount)}
-                    </p>
-                  </li>
-                ))}
-              </ul>
-            )}
 
             {page.budgetBodyText && (
               <div className="font-sans text-brand-orange italic text-base leading-relaxed mb-8 font-medium">

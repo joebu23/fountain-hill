@@ -9,11 +9,6 @@ import { IconDisplay } from '@/components/shared/IconDisplay'
 import { ServicesSection } from '@/components/shared/ServicesSection'
 import { ImpactOverview } from '@/components/shared/ImpactOverview'
 import { BudgetExplainer } from '@/components/shared/BudgetExplainer'
-import { CampaignBudgetBreakdown } from '@/components/campaign/CampaignBudgetBreakdown'
-import { ProjectCardGrid } from '@/components/shared/ProjectCardGrid'
-import { FAQAccordion } from '@/components/shared/FAQAccordion'
-import { ClosingCTA } from '@/components/shared/ClosingCTA'
-import { ResourceLinks } from '@/components/shared/ResourceLinks'
 import { StickyDonateCTA } from '@/components/shared/StickyDonateCTA'
 import { getProgressWithFallback } from '@/lib/givebutter'
 
@@ -93,22 +88,10 @@ export default async function CampaignPage({ params }: { params: Promise<Params>
           quote={campaignPage.budgetExplainer?.quote}
           quoteAttribution={campaignPage.budgetExplainer?.quoteAttribution}
         />
-        <CampaignBudgetBreakdown
-          page={campaignPage}
-          goalAmount={campaignSettings.campaignGoal ?? 1000000}
-          donateUrl={donateUrl}
+        <IconDisplay
+          title={campaignPage.iconDisplay2?.title}
+          items={campaignPage.iconDisplay2?.items}
         />
-        <ProjectCardGrid
-          heading={campaignPage.projectsHeading ?? ''}
-          projects={campaignPage.projects ?? []}
-        />
-        <FAQAccordion
-          heading={campaignPage.faqHeading ?? ''}
-          subheading={campaignPage.faqSubheading ?? undefined}
-          items={campaignPage.faqItems ?? []}
-        />
-        <ClosingCTA page={campaignPage} donateUrl={donateUrl} />
-        <ResourceLinks page={campaignPage} siteSettings={siteSettings} />
         <StickyDonateCTA donateUrl={donateUrl} />
       </main>
       <Footer siteSettings={siteSettings} donateUrl={donateUrl} />

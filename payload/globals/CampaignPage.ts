@@ -142,57 +142,23 @@ export const CampaignPage: GlobalConfig = {
       ],
     },
 
-    // ── BUDGET BREAKDOWN ──────────────────────────────────────────────────
-    { name: 'budgetHeading', type: 'text', defaultValue: '$1M Campaign Goal' },
+    // ── ICON DISPLAY 2 ────────────────────────────────────────────────────
     {
-      name: 'budgetItems',
-      type: 'array',
+      name: 'iconDisplay2',
+      type: 'group',
+      label: 'Icon Display 2',
       fields: [
-        { name: 'label', type: 'text', required: true },
-        { name: 'amount', type: 'number', required: true },
+        { name: 'title', type: 'text' },
+        {
+          name: 'items',
+          type: 'array',
+          fields: [
+            { name: 'icon', type: 'upload', relationTo: 'media' },
+            { name: 'title', type: 'text', required: true },
+            { name: 'body', type: 'richText' },
+          ],
+        },
       ],
     },
-    { name: 'budgetBodyText', type: 'richText' },
-    {
-      name: 'budgetEndorsement',
-      type: 'relationship',
-      relationTo: 'testimonials',
-      admin: { description: 'Endorsement quote shown alongside the budget. Intended for the Mayor Bliss quote.' },
-    },
-
-    // ── PROJECT COMPONENTS ────────────────────────────────────────────────
-    { name: 'projectsHeading', type: 'text', defaultValue: 'Project Components' },
-    {
-      name: 'projects',
-      type: 'relationship',
-      relationTo: 'project-components',
-      hasMany: true,
-      admin: { description: 'Select and order the project cards shown on this page.' },
-    },
-
-    // ── FAQ ───────────────────────────────────────────────────────────────
-    { name: 'faqHeading', type: 'text', defaultValue: 'FAQ' },
-    { name: 'faqSubheading', type: 'text', defaultValue: 'Heart of the Hill Capital Campaign' },
-    {
-      name: 'faqItems',
-      type: 'relationship',
-      relationTo: 'faq-items',
-      hasMany: true,
-      admin: {
-        description: 'Select FAQ items. Order is controlled by the Sort Order field on each item.',
-      },
-    },
-
-    // ── CLOSING CTA ───────────────────────────────────────────────────────
-    { name: 'closingHeading', type: 'text', defaultValue: 'A Personal Invitation' },
-    { name: 'closingBody', type: 'richText' },
-    { name: 'closingCTALabel', type: 'text', defaultValue: 'DONATE HERE' },
-
-    // ── RESOURCE LINKS ────────────────────────────────────────────────────
-    { name: 'resourcesHeading', type: 'text', defaultValue: 'View more details in our Case for Support:' },
-    { name: 'caseForSupportPDF', type: 'upload', relationTo: 'media' },
-    { name: 'caseForSupportLabel', type: 'text', defaultValue: 'DOWNLOAD PDF HERE' },
-    { name: 'historyPDF', type: 'upload', relationTo: 'media' },
-    { name: 'historyPDFLabel', type: 'text', defaultValue: 'DOWNLOAD PDF HERE' },
   ],
 }
