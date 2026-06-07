@@ -2,7 +2,7 @@ import { getPayload } from 'payload'
 import config from '@payload-config'
 import { notFound } from 'next/navigation'
 import { ComingSoon } from '@/components/campaign/ComingSoon'
-import { Footer } from '@/components/layout/Footer'
+import { CampaignFooter } from '@/components/campaign/CampaignFooter'
 import { CampaignHero } from '@/components/campaign/CampaignHero'
 import { QuoteDisplay } from '@/components/shared/QuoteDisplay'
 import { IconDisplay } from '@/components/shared/IconDisplay'
@@ -31,10 +31,7 @@ export default async function CampaignPage({ params }: { params: Promise<Params>
     return <ComingSoon />
   }
 
-  const [campaignPage, siteSettings] = await Promise.all([
-    payload.findGlobal({ slug: 'campaign-page' }),
-    payload.findGlobal({ slug: 'site-settings' }),
-  ])
+  const campaignPage = await payload.findGlobal({ slug: 'campaign-page' })
 
   const progress = await getProgressWithFallback(
     campaignSettings.givebutterCampaignId ?? '',
@@ -102,7 +99,15 @@ export default async function CampaignPage({ params }: { params: Promise<Params>
         />
         <StickyDonateCTA donateUrl={donateUrl} />
       </main>
-      <Footer siteSettings={siteSettings} donateUrl={donateUrl} />
+      <CampaignFooter
+        footerImage={campaignPage.campaignFooter?.footerImage}
+        footerMiddle={campaignPage.campaignFooter?.footerMiddle}
+        footerLinks={campaignPage.campaignFooter?.footerLinks as never}
+        footerBackgroundImage={campaignPage.campaignFooter?.footerBackgroundImage}
+        ctaLabel={campaignPage.campaignFooter?.ctaLabel}
+        ctaLink={campaignPage.campaignFooter?.ctaLink}
+        qrCode={campaignPage.campaignFooter?.qrCode}
+      />
     </>
   )
 }

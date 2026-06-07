@@ -182,5 +182,41 @@ export const CampaignPage: GlobalConfig = {
         },
       ],
     },
+
+    // ── CAMPAIGN FOOTER ───────────────────────────────────────────────────
+    {
+      name: 'campaignFooter',
+      type: 'group',
+      label: 'Campaign Footer',
+      fields: [
+        { name: 'footerImage', type: 'upload', relationTo: 'media', label: 'Footer Image (left column photo)' },
+        { name: 'footerMiddle', type: 'richText', label: 'Footer Middle Content' },
+        {
+          name: 'footerLinks',
+          type: 'array',
+          label: 'Footer Links',
+          fields: [
+            { name: 'title', type: 'text', required: true, label: 'Label above button' },
+            { name: 'ctaLabel', type: 'text', required: true, label: 'Button text' },
+            { name: 'ctaUrl', type: 'text', label: 'URL (use for external links or mailto:)' },
+            {
+              name: 'ctaMedia',
+              type: 'upload',
+              relationTo: 'media',
+              label: 'Media download (overrides URL if set)',
+            },
+          ],
+        },
+        { name: 'ctaLabel', type: 'text', label: 'CTA Button Label' },
+        { name: 'ctaLink', type: 'text', label: 'CTA Button Link' },
+        { name: 'qrCode', type: 'upload', relationTo: 'media', label: 'QR Code Image' },
+        {
+          name: 'footerBackgroundImage',
+          type: 'upload',
+          relationTo: 'media',
+          label: 'Footer Wave Background Image',
+        },
+      ],
+    },
   ],
 }
