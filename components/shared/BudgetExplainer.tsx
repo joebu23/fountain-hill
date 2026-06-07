@@ -76,10 +76,10 @@ export function BudgetExplainer({
       <div className="max-w-6xl mx-auto px-4 md:px-8">
 
         {/* Wrapper — flex row, 20/80 */}
-        <div className="flex flex-row gap-0">
+        <div className="flex flex-col md:flex-row gap-0">
 
           {/* Left (20%) — title, subtitle, subtext */}
-          <div className="w-1/5 flex-shrink-0 flex flex-col gap-4 pr-6 text-center">
+          <div className="w-full md:w-1/5 md:flex-shrink-0 flex flex-col gap-4 md:pr-6 text-center">
             {title && (
               <p className="font-sans font-black text-brand-orange leading-none" style={{ fontSize: '5rem' }}>
                 {title}
@@ -98,10 +98,10 @@ export function BudgetExplainer({
           </div>
 
           {/* Right (80%) — two inner divs as flex row */}
-          <div className="flex-1 flex flex-row gap-8 border-l border-brand-blue pl-8">
+          <div className="flex-1 flex flex-col md:flex-row gap-8 md:border-l md:border-brand-blue md:pl-8">
 
             {/* Left inner — amounts, statement, CTA, QR */}
-            <div className="w-2/5 flex-shrink-0 flex flex-col gap-5">
+            <div className="w-full md:w-2/5 md:flex-shrink-0 flex flex-col gap-5">
               {amounts && amounts.length > 0 && (
                 <div className="flex flex-col gap-3">
                   {amounts.map((item, i) => (

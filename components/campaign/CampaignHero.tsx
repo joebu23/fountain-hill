@@ -41,7 +41,7 @@ export function CampaignHero({ page, progress, donateUrl, pillars }: CampaignHer
 
       {/* ── Hero photo band ─────────────────────────────────────── */}
       <div
-        className="relative w-full bg-cover bg-center overflow-hidden h-[600px] md:h-[600px] lg:h-[650px] xl:h-[825px] 2xl:h-[975px]"
+        className="relative w-full bg-cover bg-center overflow-hidden h-[700px]"
         style={bgStyle}
       >
           {/* Campaign badge – top right */}
@@ -63,13 +63,13 @@ export function CampaignHero({ page, progress, donateUrl, pillars }: CampaignHer
 
         {/* Bottom curve overlay – pinned to very bottom of hero photo */}
         <div className="absolute bottom-0 left-0 right-0 pointer-events-none">
-          <Image
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
             src="/hero-bottom-curve.png"
             alt=""
-            width={1024}
-            height={370}
-            className="w-full h-auto block"
-            priority
+            aria-hidden="true"
+            className="block h-auto"
+            style={{ width: '100%', minWidth: 768 }}
           />
         </div>
 
@@ -84,8 +84,8 @@ export function CampaignHero({ page, progress, donateUrl, pillars }: CampaignHer
         </div>
 
         {/* HEALING headline + pillars (left) | progress bar (right) */}
-        <div className="max-w-6xl mx-auto px-4 md:px-8">
-          <div className="flex flex-col md:flex-row gap-8 md:gap-16 pb-12">
+        <div className="max-w-6xl mx-auto px-4 md:px-8 min-[1441px]:-mt-[100px]">
+          <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 pb-12">
             {/* Left – headline then pillars pushed to bottom */}
             <div className="flex-1 flex flex-col">
               <CampaignTitleBlock

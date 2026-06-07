@@ -66,9 +66,9 @@ export function ImpactOverview({
       <div className="max-w-6xl mx-auto px-4 md:px-8 flex flex-col">
 
         {/* Div 1: title wrapper — image, icon, title in a row */}
-        <div className="flex flex-row items-center gap-6">
+        <div className="flex flex-col sm:flex-row items-center gap-6">
           {titleImg?.url && (
-            <div className="overflow-hidden flex-shrink-0 w-1/2">
+            <div className="overflow-hidden flex-shrink-0 w-full sm:w-1/2">
               <Image
                 src={titleImg.url}
                 alt={titleImg.alt ?? ''}
@@ -79,11 +79,13 @@ export function ImpactOverview({
             </div>
           )}
 
-          {headerIconImg?.url ? (
-            <Image src={headerIconImg.url} alt="" width={84} height={84} className="flex-shrink-0" />
-          ) : (
-            <DefaultHeaderIcon />
-          )}
+          <div className="hidden md:block">
+            {headerIconImg?.url ? (
+              <Image src={headerIconImg.url} alt="" width={84} height={84} className="flex-shrink-0" />
+            ) : (
+              <DefaultHeaderIcon />
+            )}
+          </div>
 
           {title && (
             <div className="font-sans leading-none text-center
@@ -97,11 +99,11 @@ export function ImpactOverview({
         </div>
 
         {/* Div 2: quote + impact items */}
-        <div className="flex flex-row gap-8 md:gap-12 items-start">
+        <div className="flex flex-col sm:flex-row gap-8 md:gap-12 items-start">
 
           {/* Quote */}
           {quote && (
-            <div className="w-2/5 flex-shrink-0 flex flex-col">
+            <div className="w-full sm:w-2/5 flex-shrink-0 flex flex-col">
 
               {/* Upper quote icon */}
               <div>
@@ -138,48 +140,30 @@ export function ImpactOverview({
 
           {/* Impact items timeline */}
           {impactItems && impactItems.length > 0 && (
-            <div className="w-3/5 relative">
-              {/* Vertical centre line */}
-              <div className="absolute left-1/2 top-0 bottom-0 w-px bg-[#4BC8E8] -translate-x-1/2" />
+            <div className="w-full sm:w-3/5 relative">
+              {/* Vertical line — left edge */}
+              <div className="absolute left-[12px] top-0 bottom-0 w-px bg-[#4BC8E8]" />
 
               <div className="flex flex-col gap-8">
-                {impactItems.map((item, i) => {
-                  const isLeft = i % 2 === 0
-                  return (
-                    <div key={i} className="relative grid grid-cols-2">
-                      {/* Orange dot on the line */}
-                      <div className="absolute left-1/2 top-1/2 w-3 h-3 rounded-full bg-brand-orange -translate-x-1/2 -translate-y-1/2 z-10 ring-2 ring-white" />
+                {impactItems.map((item, i) => (
+                  <div key={i} className="relative grid grid-cols-[24px_1fr]">
+                    {/* Orange dot on the line */}
+                    <div className="absolute left-[12px] top-1/2 w-3 h-3 rounded-full bg-brand-orange -translate-x-1/2 -translate-y-1/2 z-10 ring-2 ring-white" />
 
-                      {/* Left cell */}
-                      <div className="pr-6 text-right">
-                        {isLeft && item.title && (
-                          <>
-                            <p className="font-sans font-bold text-brand-blue text-[20px] mb-1">{item.title}</p>
-                            {item.body && (
-                              <div className="font-sans text-text-dark text-base leading-relaxed [&_p]:mb-1 [&_p:last-child]:mb-0">
-                                <RichText data={item.body as never} />
-                              </div>
-                            )}
-                          </>
-                        )}
-                      </div>
+                    {/* Spacer column */}
+                    <div />
 
-                      {/* Right cell */}
-                      <div className="pl-6">
-                        {!isLeft && item.title && (
-                          <>
-                            <p className="font-sans font-bold text-brand-blue text-[20px] mb-1">{item.title}</p>
-                            {item.body && (
-                              <div className="font-sans text-text-dark text-base leading-relaxed [&_p]:mb-1 [&_p:last-child]:mb-0">
-                                <RichText data={item.body as never} />
-                              </div>
-                            )}
-                          </>
-                        )}
-                      </div>
+                    {/* Content — always on the right */}
+                    <div className="pl-6">
+                      {item.title && <p className="font-sans font-bold text-brand-blue text-[20px] mb-1">{item.title}</p>}
+                      {item.body && (
+                        <div className="font-sans text-text-dark text-base leading-relaxed [&_p]:mb-1 [&_p:last-child]:mb-0">
+                          <RichText data={item.body as never} />
+                        </div>
+                      )}
                     </div>
-                  )
-                })}
+                  </div>
+                ))}
               </div>
             </div>
           )}

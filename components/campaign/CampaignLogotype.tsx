@@ -1,6 +1,6 @@
 export function CampaignLogotype() {
   return (
-    <div id="title-wrapper" className="absolute -top-[150px] z-20 pb-8">
+    <div id="title-wrapper" className="absolute -top-[100px] lg:-top-[100px] min-[1441px]:-top-[230px] z-20 pb-8">
       <h2 className="font-serif leading-[0.75] text-left">
         <span className="block text-[68px] md:text-[90px] lg:text-[108px] font-bold text-brand-red">Heart</span>
         <span className="block pl-[50px] leading-[0.65]">

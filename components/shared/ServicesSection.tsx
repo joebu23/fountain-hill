@@ -40,11 +40,29 @@ export function ServicesSection({ leftGroup, rightGroup }: ServicesSectionProps)
   const calloutImage = resolveMedia(rightGroup?.calloutImage)
 
   return (
-    <section id="services-section" className="flex flex-col md:flex-row">
+    // Mobile: flex-col stacks in DOM order (hero → left → right-lower)
+    // Desktop lg+: CSS grid with explicit placement restores two-column layout
+    <section
+      id="services-section"
+      className="flex flex-col lg:grid lg:grid-cols-[40%_60%] lg:grid-rows-[auto_1fr]"
+    >
 
-      {/* Left — full-bleed bg, content aligned to page right-edge of this column */}
+      {/* 1. Hero image — mobile: first; desktop: top of right column */}
+      {heroImage?.url && (
+        <div className="w-full overflow-hidden h-[225px] lg:col-start-2 lg:row-start-1">
+          <Image
+            src={heroImage.url}
+            alt={heroImage.alt ?? ''}
+            width={900}
+            height={225}
+            className="w-full h-full object-cover"
+          />
+        </div>
+      )}
+
+      {/* 2 & 3. Left column (title + list) — mobile: second; desktop: full-height left column */}
       <div
-        className="bg-surface-light w-full md:w-[40%]"
+        className="bg-surface-light lg:col-start-1 lg:row-start-1 lg:row-span-2"
       >
         <div
           className="w-full py-16 pr-8"
@@ -56,7 +74,7 @@ export function ServicesSection({ leftGroup, rightGroup }: ServicesSectionProps)
             </h2>
           )}
           {leftGroup?.list && leftGroup.list.length > 0 && (
-            <ul className="space-y-2">
+            <ul className="grid grid-cols-2 gap-2 lg:grid-cols-1">
               {leftGroup.list.map((entry, i) => (
                 <li key={i} className="font-sans font-bold text-brand-navy flex items-start gap-2">
                   <span className="text-brand-orange flex-shrink-0 text-lg leading-snug">•</span>
@@ -68,30 +86,27 @@ export function ServicesSection({ leftGroup, rightGroup }: ServicesSectionProps)
         </div>
       </div>
 
-      {/* Right — white bg */}
-      <div className="bg-white w-full md:w-[60%] flex flex-col">
-
-        {/* Image — full bleed to right edge */}
-        {heroImage?.url && (
-          <div className="w-full overflow-hidden h-[225px]">
-            <Image
-              src={heroImage.url}
-              alt={heroImage.alt ?? ''}
-              width={900}
-              height={225}
-              className="w-full h-full object-cover"
-            />
-          </div>
-        )}
-
-        {/* Lower content — aligned to page right margin */}
+      {/* 4. Right lower content — mobile: last; desktop: bottom of right column */}
+      <div className="bg-white lg:col-start-2 lg:row-start-2">
         <div
           className="pl-8 pt-8 pb-16 flex flex-col gap-6"
           style={{ paddingRight: 'max(2rem, calc((100vw - 72rem) / 2 + 1.5rem))' }}
         >
+          <div className="flex flex-col min-[600px]:flex-row gap-4 items-start">
+            {/* Callout image — first on mobile, second on wider screens */}
+            {calloutImage?.url && (
+              <div className="order-1 min-[600px]:order-2 flex-shrink-0 relative overflow-hidden aspect-square w-full max-w-[385px]">
+                <Image
+                  src={calloutImage.url}
+                  alt={calloutImage.alt ?? ''}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            )}
 
-          <div className="flex gap-4 items-start">
-            <div className="flex-1 flex flex-col items-center gap-4">
+            {/* Title / CTA / QR — second on mobile, first on wider screens */}
+            <div className="order-2 min-[600px]:order-1 flex-1 flex flex-col items-center gap-4">
               {rightGroup?.title && (
                 <p className="font-sans italic font-semibold text-brand-blue text-lg text-center leading-relaxed max-w-[80%]">
                   {rightGroup.title}
@@ -117,17 +132,6 @@ export function ServicesSection({ leftGroup, rightGroup }: ServicesSectionProps)
                 />
               )}
             </div>
-
-            {calloutImage?.url && (
-              <div className="flex-shrink-0 relative overflow-hidden" style={{ width: '385px', height: '385px' }}>
-                <Image
-                  src={calloutImage.url}
-                  alt={calloutImage.alt ?? ''}
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            )}
           </div>
         </div>
       </div>

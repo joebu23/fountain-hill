@@ -70,8 +70,8 @@ export function CampaignFooter({
       <div className="relative max-w-6xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 items-start">
 
-          {/* Left: photo — z-0, sits behind the wave */}
-          <div className="relative z-0 flex flex-col items-start">
+          {/* Left: photo — z-0, sits behind the wave; hidden on mobile */}
+          <div className="relative z-0 flex-col items-start hidden md:flex">
             {img?.url && (
               <div className="relative w-full aspect-[3/4] overflow-hidden shadow-lg">
                 <Image
@@ -86,14 +86,14 @@ export function CampaignFooter({
 
           {/* Middle: rich text — z-10, above wave */}
           {footerMiddle && (
-            <div className="relative z-10 font-sans text-text-dark leading-relaxed [&_h1]:font-sans [&_h1]:text-[24px] [&_h1]:text-brand-blue [&_h1]:font-bold [&_h1]:mb-4 [&_h2]:font-sans [&_h2]:text-[24px] [&_h2]:text-brand-blue [&_h2]:font-bold [&_h2]:mb-3 [&_h3]:font-sans [&_h3]:text-[24px] [&_h3]:text-brand-blue [&_h3]:font-bold [&_h3]:mb-2 [&_h4]:font-sans [&_h4]:text-[24px] [&_h4]:text-brand-blue [&_h4]:font-bold [&_h4]:mb-2 [&_p]:text-base [&_p]:mb-3 [&_p_strong]:font-semibold [&_p_strong]:text-brand-sky [&_p_b]:font-semibold [&_p_b]:text-brand-sky [&_a]:text-brand-blue [&_a]:underline [&_a:hover]:text-brand-orange">
+            <div className="relative z-10 px-4 md:px-0 font-sans text-text-dark leading-relaxed [&_h1]:font-sans [&_h1]:text-[24px] [&_h1]:text-brand-blue [&_h1]:font-bold [&_h1]:mb-4 [&_h2]:font-sans [&_h2]:text-[24px] [&_h2]:text-brand-blue [&_h2]:font-bold [&_h2]:mb-3 [&_h3]:font-sans [&_h3]:text-[24px] [&_h3]:text-brand-blue [&_h3]:font-bold [&_h3]:mb-2 [&_h4]:font-sans [&_h4]:text-[24px] [&_h4]:text-brand-blue [&_h4]:font-bold [&_h4]:mb-2 [&_p]:text-base [&_p]:mb-3 [&_p_strong]:font-semibold [&_p_strong]:text-brand-sky [&_p_b]:font-semibold [&_p_b]:text-brand-sky [&_a]:text-brand-blue [&_a]:underline [&_a:hover]:text-brand-orange">
               <RichText data={footerMiddle as never} />
             </div>
           )}
 
           {/* Right: footer links — z-10, above wave */}
           {footerLinks && footerLinks.length > 0 && (
-            <div className="relative z-10 flex flex-col gap-[3rem] pt-[4rem] pl-[4rem]">
+            <div className="relative z-10 flex flex-col items-center md:items-start gap-[3rem] md:pt-[4rem] md:pl-[4rem]">
               {footerLinks.map((link, i) => {
                 const media = resolveMedia(link.ctaMedia as MediaRef | number | null | undefined)
                 const href = media?.url ?? link.ctaUrl ?? '#'
@@ -128,7 +128,7 @@ export function CampaignFooter({
 
       {/* Bottom CTA — centered, on top of wave */}
       {(qr?.url || ctaLabel) && (
-        <div className="absolute bottom-8 left-0 right-0 z-10 flex flex-col items-center gap-4">
+        <div className="absolute bottom-8 left-0 right-0 z-10 hidden md:flex flex-col items-center gap-4">
           {qr?.url && (
             <Image
               src={qr.url}

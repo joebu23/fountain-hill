@@ -28,7 +28,7 @@ export function IconDisplay({ title, items }: IconDisplayProps) {
             {title}
           </h2>
         )}
-        <div className="flex flex-col md:flex-row items-stretch">
+        <div className="grid grid-cols-2 lg:flex lg:flex-row lg:items-stretch">
           {items.flatMap((item, i) => {
             const icon =
               typeof item.icon === 'object' && item.icon !== null
@@ -65,7 +65,7 @@ export function IconDisplay({ title, items }: IconDisplayProps) {
                 ? [
                     <div
                       key={`divider-${i}`}
-                      className="hidden md:block w-[2px] bg-brand-navy opacity-30 self-stretch mt-[151px] mb-6"
+                      className="hidden lg:block w-[2px] bg-brand-navy opacity-30 self-stretch mt-[151px] mb-6"
                     />,
                   ]
                 : []),

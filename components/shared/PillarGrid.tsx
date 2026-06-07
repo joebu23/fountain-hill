@@ -19,7 +19,7 @@ export function PillarGrid({ pillars }: PillarGridProps) {
   if (!pillars || pillars.length === 0) return null
 
   return (
-    <div id="campaign-goal-icons" className="grid grid-cols-1 md:grid-cols-[1fr_2px_1fr_2px_1fr]">
+    <div id="campaign-goal-icons" className="grid grid-cols-2 lg:grid-cols-[1fr_2px_1fr_2px_1fr]">
       {pillars.flatMap((pillar, i) => [
         <div key={i} className="flex flex-col items-center text-center py-6 px-4">
           {pillar.icon?.url ? (
@@ -42,7 +42,7 @@ export function PillarGrid({ pillars }: PillarGridProps) {
         </div>,
         ...(i < pillars.length - 1
           ? [
-              <div key={`div-${i}`} className="hidden md:flex flex-col pt-[140px] pb-6">
+              <div key={`div-${i}`} className="hidden lg:flex flex-col pt-[140px] pb-6">
                 <div className="flex-1 w-[2px] mx-auto bg-brand-navy" />
               </div>,
             ]
