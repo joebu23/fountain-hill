@@ -16,7 +16,15 @@ jobs:
           username: ${{ secrets.DEPLOY_USER }}
           key: ${{ secrets.DEPLOY_KEY }}
           port: ${{ secrets.DEPLOY_PORT || 22 }}
+          script_stop: true
           script: |
+            set -e
+
+            # Clone repo on first deploy if not present
+            if [ ! -d "${{ secrets.DEPLOY_PATH }}/.git" ]; then
+              git clone https://github.com/${{ github.repository }}.git ${{ secrets.DEPLOY_PATH }}
+            fi
+
             cd ${{ secrets.DEPLOY_PATH }}
             git pull origin main
             docker compose -f docker/docker-compose.yml up -d --build
