@@ -21,7 +21,7 @@ export function IconDisplay({ title, items }: IconDisplayProps) {
   if (!items || items.length === 0) return null
 
   return (
-    <section className="py-16 md:py-24 bg-white">
+    <section className="py-4 md:py-8 bg-white">
       <div className="max-w-6xl mx-auto">
         {title && (
           <h2 className="font-sans font-bold text-2xl text-brand-blue mb-1 text-center">

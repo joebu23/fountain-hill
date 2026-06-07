@@ -160,5 +160,27 @@ export const CampaignPage: GlobalConfig = {
         },
       ],
     },
+
+    // ── FAQ SECTION ───────────────────────────────────────────────────────
+    {
+      name: 'faqSection',
+      type: 'group',
+      label: 'FAQ Section',
+      fields: [
+        { name: 'icon', type: 'upload', relationTo: 'media' },
+        { name: 'title', type: 'text' },
+        { name: 'subtitle', type: 'text' },
+        { name: 'titleImage', type: 'upload', relationTo: 'media' },
+        {
+          name: 'faqs',
+          label: 'FAQs',
+          type: 'array',
+          fields: [
+            { name: 'question', type: 'text', required: true },
+            { name: 'answer', type: 'richText' },
+          ],
+        },
+      ],
+    },
   ],
 }

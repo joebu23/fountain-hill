@@ -9,6 +9,7 @@ import { IconDisplay } from '@/components/shared/IconDisplay'
 import { ServicesSection } from '@/components/shared/ServicesSection'
 import { ImpactOverview } from '@/components/shared/ImpactOverview'
 import { BudgetExplainer } from '@/components/shared/BudgetExplainer'
+import { FAQSection } from '@/components/shared/FAQSection'
 import { StickyDonateCTA } from '@/components/shared/StickyDonateCTA'
 import { getProgressWithFallback } from '@/lib/givebutter'
 
@@ -91,6 +92,13 @@ export default async function CampaignPage({ params }: { params: Promise<Params>
         <IconDisplay
           title={campaignPage.iconDisplay2?.title}
           items={campaignPage.iconDisplay2?.items}
+        />
+        <FAQSection
+          icon={campaignPage.faqSection?.icon as never}
+          title={campaignPage.faqSection?.title}
+          subtitle={campaignPage.faqSection?.subtitle}
+          titleImage={campaignPage.faqSection?.titleImage as never}
+          faqs={campaignPage.faqSection?.faqs as never}
         />
         <StickyDonateCTA donateUrl={donateUrl} />
       </main>
